@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
+import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -28,13 +29,15 @@ public class MainActivity extends AppCompatActivity {
         Log.i("html", "Inicio descarga");
 
 
-        //html = downloadTask.execute("https://www.rollingstone.com/tv/tv-lists/40-best-game-of-thrones-characters-ranked-and-updated-29974/the-night-king-227343/").get();
+        downloadTask.execute("https://www.rollingstone.com/tv/tv-lists/40-best-game-of-thrones-characters-ranked-and-updated-29974/the-night-king-227343/");
         //html = downloadTask.execute("http://help.websiteos.com/websiteos/example_of_a_simple_html_page.htm").get();
-        downloadTask.execute("https://www.hbo.com/game-of-thrones/cast-and-crew");
+        //downloadTask.execute("https://www.hbo.com/game-of-thrones/cast-and-crew");
+        //downloadTask.execute("http://help.websiteos.com/websiteos/example_of_a_simple_html_page.htm");
         // view-source:http://help.websiteos.com/websiteos/example_of_a_simple_html_page.htm
 
 
-        Log.i("html", html);
+        //Log.i("html", html);
+
 
     }
 
@@ -53,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
                 url = new URL(urls[0]);
 
                 urlConnection = (HttpURLConnection) url.openConnection();
-                InputStream inputStream = urlConnection.getInputStream();
+                /*InputStream inputStream = urlConnection.getInputStream();
                 InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
 
                 // Esto es muy estilo C
@@ -64,8 +67,19 @@ public class MainActivity extends AppCompatActivity {
                     result += character;
                     html += character;
                     data = inputStreamReader.read();
-                }
+                }*/
 
+                BufferedReader br = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
+                String linea;
+
+                while((linea = br.readLine()) != null){
+                    html += linea;
+                }
+                br.close();
+                Log.i( "html","Termino");
+                System.out.println(html);
+                System.out.println("----------");
+                System.out.println(html.length());
                 return result;
             }
             catch (MalformedURLException e){
