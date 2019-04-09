@@ -14,33 +14,17 @@
 
         <ImageView
             android:id="@+id/imagenPersonajeImageView"
-            android:layout_width="300dp"
-            android:layout_height="300dp"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
             android:layout_marginBottom="20dp"
             app:srcCompat="@mipmap/ic_launcher" />
 
         <Button
-            android:id="@+id/opcion1Btn"
+            android:id="@+id/iniciarBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:text="Iniciar Juego"
+            android:onClick="iniciarJuego"/>
 
-        <Button
-            android:id="@+id/opcion2Btn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Button" />
-
-        <Button
-            android:id="@+id/opcion3Btn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Button" />
-
-        <Button
-            android:id="@+id/opcion4Btn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Button" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
